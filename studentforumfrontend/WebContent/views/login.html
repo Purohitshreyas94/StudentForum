@@ -1,0 +1,57 @@
+{{message}}
+<span style="color:red">{{error.message}}</span>
+{{logoutSuccess}}
+
+<body id="body-bg-image">
+		<div class="nicdark_space3 nicdark_bg_gradient"></div>
+		<div class="container">
+			<div class="row">
+			<div class="col-sm-4 col s2">
+			</div>
+			<div class="col-sm-4 col s8 z-depth-4 p-20 bg-white">
+				<div class="panel panel-info" >
+                    <div class="panel-heading">
+                        <div class="panel-title"><h5 style="display:inline" >Student Forum </h5>&nbsp;- &nbsp;Log In</div>
+                        <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#/register" >Register Now</a></div>
+                    </div>     
+
+                    <div style="padding-top:30px" class="panel-body" >
+
+                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                         <form class="col s12" method="post" action="">
+				
+								<div class="row">
+									<div class="input-field col s12">
+									  <input id="username" name="username" type="text" ng-model="user.username"  class="validate" required >
+									  <label for="username"  class="active">Username</label>
+									</div>
+									
+								</div>
+								<div class="row">
+									
+									<div class="input-field col s12">
+									  <input id="password" name="password" type="password" ng-model="user.password" class="validate" required>
+									  <label for="password" class="active">Password</label>
+									</div>
+								</div>
+								
+							  <div class="row text-center">
+								
+								<div class="input-field col s12  text-center">
+									<input type="submit" class="btn" style="color:#fff" ng-click="validateUser()" value="SIGN IN">
+								
+								</div>
+								
+								
+							  </div>
+							</form>	   
+                       
+
+                        </div>                     
+                    </div>  
+			</div>
+			<div class="col-sm-4 col s2">
+			</div>
+			</div>
+		</div>
+</body>

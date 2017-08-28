@@ -1,0 +1,86 @@
+<body id="body-bg-image">
+		<div class="nicdark_space3 nicdark_bg_gradient"></div>
+		<div class="container">
+			<div class="row">
+			<div class="col-sm-4 col s2">
+			</div>
+			<div class="col-sm-4 col s8 z-depth-4 p-20 bg-white">
+				<div class="panel panel-info" >
+                    <div class="panel-heading">
+                        <div class="panel-title"><h5 style="display:inline" >Student Forum </h5>&nbsp;- &nbsp;Register</div>
+                       
+                    </div>     
+
+                    <div style="padding-top:30px" class="panel-body" >
+
+                       <form class="col s12">
+                                 <div class="row">
+									<div class="input-field col s12">
+									  <input id="username" name="username"type="text" ng-model="user.username" class="validate"required >
+									  <label for="email"  class="active">User Name</label>
+									</div>
+								</div>
+								
+								<div class="row">
+									<div class="input-field col s6">
+									  <input id="firstname" name="firstname"type="text" ng-model="user.firstname" class="validate"required >
+									  <label for="email"  class="active">First Name</label>
+									</div>
+									<div class="input-field col s6">
+									  <input name="lastname" id="lastname" type="text" ng-model="user.lastname" class="validate" required>
+									  <label for="lastname" class="active">Last Name</label>
+									</div>
+									
+								</div>
+								
+								<div class="row">
+									<div class="input-field col s6">
+									  <input id="email" name="email"type="email" ng-model="user.email" class="validate" required >
+									  <label for="email"  class="active">Email</label>
+									</div>
+									<div class="input-field col s6">
+									  <input id="password" name="password" type="password" ng-model="user.password" class="validate" required>
+									  <label for="password" class="active">Password</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="input-field col s6">
+									  <input id="mobile" name="mobile"type="text" ng-model="user.phonenumber" class="validate" required >
+									  <label for="mobile"  class="active">Mobile No.</label>
+									</div>
+									<div class="input-field col s6 inline">
+									  
+										 
+											<select id="role" name="role" ng-model="user.role"  class="input-field inline mt-0" required>
+																	   <option>-- Please Select Role--</option>
+																	<option value="STUDENT" >Student</option>
+																		<option value="ALUMINI" >Alumini</option>
+																		<option value="EMPLOYEE">Employee</option>
+																		
+																		
+											 </select>
+											
+										 
+									</div>
+								</div>
+							  
+							  <div class="row text-center">
+								
+								<div class="input-field s6 col text-center">
+									<input type="submit" class="btn col s12" style="color:#fff" ng-click="registerUser()" value="SIGN UP">
+								
+								</div>
+								
+								
+							  </div>
+							</form>	 
+									   
+
+                        </div>                     
+                    </div>  
+			</div>
+			<div class=" col s2">
+			</div>
+			</div>
+		</div>
+</body>
