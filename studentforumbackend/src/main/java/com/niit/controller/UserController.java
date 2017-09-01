@@ -48,22 +48,25 @@ public class UserController
     		return new ResponseEntity<Error>(error,HttpStatus.INTERNAL_SERVER_ERROR);
     	}
 	}
+    
     @RequestMapping(value="/login",method=RequestMethod.POST)
-    //HttpRequest Body : 
+    //HttpRequest Body :
     //{"username":"adam","password":"123","firstname":"","lastname:"","email":"","online":false}
     public ResponseEntity<?> login(@RequestBody User user,HttpSession session){
-    	User validuser=userDao.login(user);
-    	if(validuser==null){//invalid credentials
-    		Error error=new Error(4,"Invalid username/password.. please enter valid username/pwd");
-    		return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
-    	}
-    	validuser.setOnline(true);
-    	userDao.update(validuser);//update only the online status from 0 to 1
-    	session.setAttribute("username", validuser.getUsername());
-    	//HttpResponse Body:
-    	//{"username":"adam","password":"123","firstname":"Adam","lastname:"Eve","email":"a.e@abc.com","online":true}
-    	return new ResponseEntity<User>(validuser,HttpStatus.OK);
+        User validuser=userDao.login(user);
+        if(validuser==null){//invalid credentials
+            Error error=new Error(4,"Invalid username/password.. please enter valid username/pwd");
+            return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
+        }
+        validuser.setOnline(true);
+        userDao.update(validuser);//update only the online status from 0 to 1
+       session.setAttribute("username", validuser.getUsername());
+        //HttpResponse Body:
+        //{"username":"adam","password":"123","firstname":"Adam","lastname:"Eve","email":"a.e@abc.com","online":true}
+        return new ResponseEntity<User>(validuser,HttpStatus.OK);
     }
+    
+    
     @RequestMapping(value="/logout",method=RequestMethod.GET)
     public ResponseEntity<?> logout(HttpSession session){
     	if(session.getAttribute("username")==null){

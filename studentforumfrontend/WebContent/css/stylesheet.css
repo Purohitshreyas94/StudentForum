@@ -10,7 +10,7 @@
  }
   #body-bg-image
   {
-  background-image:url("images/home-background-img2.png") ;
+  background-image:url("..images/home-background-img2.png") ;
   background-size:cover;
   position:relative;
   min-height:100%;

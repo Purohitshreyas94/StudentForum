@@ -10,8 +10,9 @@ app.factory('UserService',function($http){
 	}
 	
 	userService.validateUser=function(user){
-		return $http.post(BASE_URL+"/login",user)
-	}
+        console.log(user)
+        return $http.post(BASE_URL+"/login",user)
+    }
 	
 	userService.logout=function(){
 		return $http.get(BASE_URL+"/logout")
