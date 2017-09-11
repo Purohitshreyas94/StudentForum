@@ -34,9 +34,33 @@ app.config(function($routeProvider){
 		templateUrl:'views/jobtitles.html',
 		controller:'JobController'
 	})
+	.when('/saveblogpost',{
+		templateUrl:'views/blogpostform.html',
+		controller:'BlogPostController'
+	})
+	.when('/getallblogs',{
+		templateUrl:'views/listofblogposts.html',
+		controller:'BlogPostController'
+	})
+	.when('/getallapprovelblogs',{
+		templateUrl:'views/listofapprovelblogposts.html',
+		controller:'BlogPostController'
+	})
+	.when('/getblogpostbyid/:id',{
+		templateUrl:'views/blogpostdetails.html',
+		controller:'BlogPostDetailController'
+	})
+	.when('/approveblogpost/:id',{
+		templateUrl:'views/blogpostapprovalform.html',
+		controller:'BlogPostDetailController'
+	})
+	  .when('/profilepic',{
+		templateUrl:'views/profpic2.html'
+	})
 
 	.otherwise({
-		templateUrl:'views/login.html'
+		templateUrl:'views/login.html',
+		controller:'UserController'
 	    
 	})
 })

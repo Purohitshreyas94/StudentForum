@@ -1,22 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+
+ <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+ <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+ 
+ <link rel="stylesheet" href="css/bootstrap-darkly-theme.css" />
+     
+ <link href="css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
+    
+ <link href="themes/explorer/theme.css" media="all" rel="stylesheet" type="text/css"/>
+   
+    
+    <script src="js/plugins/sortable.js" type="text/javascript"></script>
+    <script src="js/fileinput.js" type="text/javascript"></script>
+   
+    <script src="themes/explorer/theme.js" type="text/javascript"></script>
+   
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+     
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" />
+   
+<title>Change Profile Picture</title>
+</head>
+<body>
+
 <div class="container-fluid mt-50 pl-0">
 				<div class="row">
 					<div class="col-md-2 p-0 bg-yellow">
 						<div id="profile" class="pl-50 pr-50 pt-20 pb-30 bg-black">
-							<img src="images/shreyu.png" width="150"class="img-responsive img-circle"><br>
-							<i style="color:#fff"> shreyas@gmail.com</i>
+							<img src="http://localhost:8081/studentforumbackend/getimage/{{currentUser.username}}" alt="" onerror="this.src='images/img_avatar1.png'" width="150"class="img-responsive img-circle"><br>	
+							<a href="#/profilepic">Change Profile</a><br>
+							<i style="color:#fff"> {{currentUser.firstname}} {{currentUser.lastname}}</i>
+							
 						</div>
 						<div class="pl-15 ">
 								 <ul class="nav nav-pills nav-stacked" id="stacked-menu">
 										<li><a class="nav-container" data-toggle="collapse" data-parent="#stacked-menu" href="#p2"><i class="fa-address-book fa"></i> Profile<div class="caret-container"><span class="caret arrow"></span></div></a>    
 										
-											 <ul class="nav nav-pills nav-stacked collapse" id="p2">
+											 <ul class="nav nav-pills nav-stacked collapse in" id="p2">
 												<li data-toggle="collapse" data-parent="#p2" href="#pv1">
 												  <a class="nav-sub-container"><i class="fa  fa-angle-double-right"></i> Update Profile</a></li>
 												 
 												
 												
 												<li data-toggle="collapse" data-parent="#p2" href="#pv2">
-												  <a class="nav-sub-container"><i class="fa  fa-angle-double-right"></i> Log Out</a></li>
+												  <a class="nav-sub-container" href="#/profilepic"><i class="fa  fa-angle-double-right"></i>Change Profile Picture</a></li>
 												 
 		 
 												
@@ -55,7 +94,7 @@
 										
 										<li><a class="nav-container" data-toggle="collapse" data-parent="#stacked-menu" href="#p3"><i class="fa fa-rss" aria-hidden="true"></i> Blog<div class="caret-container"><span class="caret arrow"></span></div></a>    
 										
-											 <ul class="nav nav-pills nav-stacked collapse" id="p3">
+											 <ul class="nav nav-pills nav-stacked collapse in" id="p3">
 												<li data-toggle="collapse" data-parent="#p3" href="#pv1">
 												  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> My Blogs</a></li>
 												 											
@@ -71,15 +110,40 @@
 											
 										</li>
 										
-										<li><a class="nav-container" href="#/aboutus"><i class="fa fa-file" aria-hidden="true"></i>About Us</a></li>
+										<li><a class="nav-container" href="#" ng-click="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i>Log Out</a></li>
 									  </ul>
 						
 						</div>
 					
 					</div>
-		</div>
-	</div>				
-			<div class="container-fluid bg-yellow">
+					<div class="col-md-9">
+						<div class="container">
+						
+							<div class="col-md-9">
+							<b><h3 align = "center">&nbsp;&nbsp;&nbsp;Upload Display Picture : </h3></b> 
+							<div class="container kv-main">
+						        <div class="form-group">
+								            <input class="file" type="file" 
+								            name="image"
+								            data-preview-file-type="any" 
+								            data-upload-url="http://localhost:8081/studentforumbackend/uploadprofilepic">
+								   </div>
+							</div>
+							  <!--  
+								      <form action="http://localhost:8081/studentforumbackend/uploadprofilepic" method="post" enctype="multipart/form-data">
+								      <input type="file" name="image">
+								      <input type="submit" value="upload">
+								      </form>-->	
+							</div>
+							<div class="col-md-3">
+							</div>
+						</div>
+					</div>
+				</div>
+			
+			
+	</div>
+	<div class="container-fluid bg-yellow mt-50">
 				<div class="container" style="padding:30px">
 						<div class="row">
 								 <div class="col-sm-4">
@@ -106,12 +170,15 @@
 								  </div>
 								</div>
 								<div class="col-sm-4">
-									<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.170594320852!2d72.97329121446982!3d19.187749887023937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b920c9f39551%3A0xf945af6df994a80!2sNIIT!5e0!3m2!1sen!2sin!4v1498773636228" width="100%" height=180 border="1"></iframe>
+									<p><b>About Student Forum</b></p>
+								  <p>Student Forum gives you the opportunity to create, manage your own blogs,forums. Also it helps you to manage the friend requests & users. You have various options to update profile for blogging. </p>
 								</div>
+								
 						 </div>
 				</div>
 				
 				
 			
-			</div>  
-	
+			</div>
+	</body>
+</html>

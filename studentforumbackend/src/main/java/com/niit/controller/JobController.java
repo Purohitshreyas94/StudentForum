@@ -29,11 +29,12 @@ public class JobController
 	private UserDao userDao;
    
 	@RequestMapping(value="/savejob",method=RequestMethod.POST)
-	public ResponseEntity<?> saveJob(@RequestBody Job job,HttpSession session){
+	public ResponseEntity<?> saveJob(@RequestBody Job job,HttpSession session){	
+		System.out.println(session.getAttribute("username"));
 		if(session.getAttribute("username")==null){
-			Error error=new Error(5,"UnAuthroized User");
-			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
-		}
+		Error error=new Error(5,"UnAuthroized User");
+		return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
+	  }
 		String username=(String)session.getAttribute("username");
 		User user=userDao.getUserByUsername(username);
         if(user.getRole().equals("ADMIN")){
@@ -52,6 +53,7 @@ public class JobController
         }
 		
 	}
+	
 	@RequestMapping(value="/getalljobs",method=RequestMethod.GET)
 	public ResponseEntity<?> getAllJobs(HttpSession session){
 		if(session.getAttribute("username")==null){
@@ -61,6 +63,7 @@ public class JobController
 		List<Job> jobs=jobDao.getAllJobs();
 		return new ResponseEntity<List<Job>>(jobs,HttpStatus.OK);
 	}
+	
 	@RequestMapping(value="/getjobbyid/{id}",method=RequestMethod.GET)
 	public ResponseEntity<?> getJobById(@PathVariable int id,HttpSession session){
 		if(session.getAttribute("username")==null){
@@ -71,6 +74,7 @@ public class JobController
 		return new ResponseEntity<Job>(job,HttpStatus.OK);
 		
 	}
+
 }
 
 

@@ -2,7 +2,7 @@
 				<div class="row">
 					<div class="col-md-2 p-0 bg-yellow">
 						<div id="profile" class="pl-50 pr-50 pt-20 pb-30 bg-black">
-							<img src="http://localhost:8081/studentforumbackend/getimage/{{currentUser.username}}" alt="" onerror="this.src='images/user1.png'" width="150"class="img-responsive img-circle"><br>	
+							<img src="http://localhost:8081/studentforumbackend/getimage/{{currentUser.username}}" alt="" onerror="this.src='images/img_avatar1.png'" width="150"class="img-responsive img-circle"><br>	
 							<i style="color:#fff"> {{currentUser.firstname}} {{currentUser.lastname}}</i><br>
 							<i style="color:#fff"> {{currentUser.role}}</i>
 						</div>
@@ -54,15 +54,13 @@
 										
 											 <ul class="nav nav-pills nav-stacked collapse in" id="p3">
 												<li data-toggle="collapse" data-parent="#p3" href="#pv1">
-												  <a class="nav-sub-container" href="#/getallblogs"><i class="fa  fa-angle-double-right"></i> View Blogs</a></li>
-												  
-												 	<li data-toggle="collapse" data-parent="#p3" href="#pv1">
-												  <a class="nav-sub-container" href="#/getallapprovelblogs" ng-show="currentUser.role=='ADMIN'"><i class="fa  fa-angle-double-right"></i>Approve Blogs</a></li>										
+												  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> My Blogs</a></li>
+												 											
 												
 												<li data-toggle="collapse" data-parent="#p3" href="#pv2">
-												  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i>Blogs</a></li>
+												  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> View Blogs</a></li>
 												 <li data-toggle="collapse" data-parent="#p3" href="#pv3">
-												  <a class="nav-sub-container" href="#/saveblogpost"><i class="fa  fa-angle-double-right"></i> Create Blog</a></li>
+												  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> Create Blog</a></li>
 		 
 												
 												
@@ -76,71 +74,99 @@
 						</div>
 					
 					</div>
-					
-					<!-- Main Body Starts -->
 					<div class="col-md-9">
 						<div class="container">
 						
-							<div class="col-md-9">
-								<marquee width="100%"><font size="6" face="Verdana"><b>Welcome {{currentUser.firstname}} {{currentUser.lastname}}, you are now logged in as an {{currentUser.role}}</b></font></marquee><br>
-									<div class="media p-20 bg-bluish">
-									  <div class="media-left">
-										<img src="images/img_avatar1.png" class="media-object" style="width:60px">
-									  </div>
-									  <div class="media-body">
-										<h5 class="media-heading" style="color:#f9e246;">John Doe</h5>
-										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been dummy text of the printing and typesetting industry.</p>
-									  </div>
+							
+								
+								<div class="row">
+									<div class="col-md-5 ">
+									<h2 >JOB DETAILS</h2>
 									</div>
-									
-									<div class="media p-20 bg-bluish">
-									  <div class="media-left">
-										<img src="images/img_avatar1.png" class="media-object" style="width:60px">
-									  </div>
-									  <div class="media-body">
-										<h5 class="media-heading" style="color:#f9e246;">John Doe</h5>
-										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been dummy text of the printing and typesetting industry.</p>
-									  </div>
+										
+									<div class="col-md-6 pt-20 text-center">
+										<div class="input-group">
+											<input ng-model="searchText" class="form-control" placeholder="Search for Jobs...">
+											  <span class="input-group-btn">
+												<button class="btn btn-search"><i class="fa fa-search fa-fw"></i> </button>
+											  </span>
+										</div> 
+										
 									</div>
-									
-									<div class="media p-20 bg-bluish">
-									  <div class="media-left">
-										<img src="images/img_avatar1.png" class="media-object" style="width:60px">
-									  </div>
-									  <div class="media-body">
-										<h5 class="media-heading" style="color:#f9e246;">John Doe</h5>
-										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been dummy text of the printing and typesetting industry.</p>
-									  </div>
+									<div class="col-md-1 ">
+										&nbsp;
+									</div>	
+							    </div>
+								<div class="p-10"></div>
+								<div class="row">
+									<div class="col-md-11">
+										 <div class="table-responsive">          
+											  <table class="table table-striped">
+												<thead>
+												  <tr>
+													<th>Job Title</th>
+													<th>Company Name</th>
+													<th>Posted On</th>
+													
+													
+												  </tr>
+												</thead>
+												<tbody>
+												  <tr ng-repeat = "job in jobs | filter : searchText">	
+													<td><a href = "" ng-click = "getJobDetails(job.id)">{{job.jobTitle}}</a></td>
+													<td>{{job.companyname}}</td>
+													<td>{{job.postedOn | date : "dd MMMM yyyy"}}</td>
+													
+													
+												  </tr>
+										</tbody>
+											  </table>
+										 </div>
 									</div>
-									
-									<div class="media p-20 bg-bluish">
-									  <div class="media-left">
-										<img src="images/img_avatar1.png" class="media-object" style="width:60px">
-									  </div>
-									  <div class="media-body">
-										<h5 class="media-heading" style="color:#f9e246;">John Doe</h5>
-										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been dummy text of the printing and typesetting industry.</p>
-									  </div>
+								</div>
+								
+								
+								<div class="row mt-50" ng-show = "showJobDetails">
+									<div class="col-md-11">
+									   <h2 align = "center"><b>Job Details</b></h2>
+										 <div class="table-responsive">          
+											  <table class="table table-striped">
+											    <tr>
+                                                         <td><h5><b>Job Title &nbsp;:-</b></h5></td><td>{{job.jobTitle}}</td>
+											      </tr>
+											         <tr>
+                                                         <td><h5><b>Name of the Company &nbsp;:-</b></h5></td><td>{{job.companyname}}</td>
+											      </tr>
+											       <tr>
+                                                        <td><h5><b>Job Description &nbsp;:-</b></h5></td><td>{{job.jobDescription}}</td>
+											      </tr>
+											       <tr>
+                                                         <td><h5><b>Required Skills &nbsp;:-</b></h5></td><td>{{job.skillRequired}}</td>
+											      </tr>
+											       <tr>
+                                                         <td><h5><b>Experience Required  &nbsp;:-</b></h5></td><td>{{job.yrsOfExp}}</td>
+											      </tr>
+											       <tr>
+                                                         <td><h5><b>Salary  &nbsp;:-</b></h5></td><td>{{job.salary}}</td>
+											      </tr>
+											       <tr>
+                                                        <td><h5><b>Location  &nbsp;:-</b></h5></td><td>{{job.location}}</td>
+											      </tr>
+											       <tr>
+                                                         <td><h5><b>Posted On  &nbsp;:-</b></h5></td><td>{{job.postedOn | date : "dd MMMM yyyy"}}</td>
+											      </tr>
+											</table>
+										 </div>
 									</div>
-									<div class="media p-20 bg-bluish">
-									  <div class="media-left">
-										<img src="images/img_avatar1.png" class="media-object" style="width:60px">
-									  </div>
-									  <div class="media-body">
-										<h5 class="media-heading" style="color:#f9e246;">John Doe</h5>
-										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been dummy text of the printing and typesetting industry.</p>
-									  </div>
-									</div>
-									
-							</div>
-							<div class="col-md-3">
-							</div>
+								</div>
+							
 						</div>
 					</div>
-				</div>						
-	</div>			
-	
-	
+				</div>
+			
+			
+			</div>
+			
 			<!-- footer strats here-->
 			<div class="container-fluid bg-yellow mt-30">
 				<div class="container" style="padding:30px">
@@ -169,7 +195,8 @@
 								  </div>
 								</div>
 								<div class="col-sm-4">
-									<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.170594320852!2d72.97329121446982!3d19.187749887023937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b920c9f39551%3A0xf945af6df994a80!2sNIIT!5e0!3m2!1sen!2sin!4v1498773636228" width="100%" height=180 border="1"></iframe>
+									<p><b>About Student Forum</b></p>
+								  <p>Student Forum gives you the opportunity to create, manage your own blogs,forums. Also it helps you to manage the friend requests & users. You have various options to update profile for blogging. </p>
 								</div>
 						 </div>
 				</div>

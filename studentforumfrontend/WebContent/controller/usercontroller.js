@@ -35,7 +35,7 @@ app.controller('UserController',function(UserService,$scope,$rootScope,$location
             console.log(response.data)
             $rootScope.currentUser=response.data
             $cookieStore.put("currentUser",response.data)
-            $location.path('/aboutus')
+            $location.path('/home')
         },function(response){
             $scope.error=response.data
             console.log($scope.error)

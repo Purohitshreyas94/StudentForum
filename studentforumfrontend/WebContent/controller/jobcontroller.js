@@ -2,7 +2,7 @@
  * Job Controller
  */
 app.controller('JobController',function(JobService,$scope,$location){
-	
+	$scope.showJobDetails=false;
 	
 	function getAllJobs(){
 		JobService.getAllJobs().then(function(response){
@@ -28,6 +28,17 @@ app.controller('JobController',function(JobService,$scope,$location){
 			$location.path('/home')
 		})
 	}
+	
+	$scope.getJobDetails=function(id){
+		$scope.showJobDetails=true
+		JobService.getJobDetails(id).then(function(response){
+			$scope.job=response.data
+		},function(response){
+			console.log(response.data)
+			$location.path('/login')
+		})
+	}	
 getAllJobs()	
 	
 })
+
