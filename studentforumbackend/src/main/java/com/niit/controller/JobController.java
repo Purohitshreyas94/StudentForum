@@ -18,6 +18,7 @@ import com.niit.dao.JobDao;
 import com.niit.dao.UserDao;
 import com.niit.model.Job;
 import com.niit.model.User;
+import com.niit.model.BlogPost;
 import com.niit.model.Error;
 
 @Controller
@@ -73,6 +74,21 @@ public class JobController
 		Job job=jobDao.getJobById(id);
 		return new ResponseEntity<Job>(job,HttpStatus.OK);
 		
+	}
+	
+	@RequestMapping(value="/updatejob",method=RequestMethod.PUT)
+	public ResponseEntity<?>updateJob(@RequestBody Job job,HttpSession session){
+		if(session.getAttribute("username")==null){
+			Error error=new Error(5,"UnAuthorized User");
+			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);//401 - 2nd call back func will be executed
+		}
+		try{
+		     jobDao.updateJob(job);
+			return new ResponseEntity<Job>(job,HttpStatus.OK);
+		}catch(Exception e){
+			Error error=new Error(6,"Unable to update blog post "+ e.getMessage());
+			return new ResponseEntity<Error>(error,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 }

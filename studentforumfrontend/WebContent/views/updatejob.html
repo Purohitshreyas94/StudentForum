@@ -12,7 +12,7 @@
 										
 											 <ul class="nav nav-pills nav-stacked collapse in" id="p2">
 												<li data-toggle="collapse" data-parent="#p2" href="#pv1">
-												   <a class="nav-sub-container" href="#/editprofile"><i class="fa  fa-angle-double-right"></i><u>Update Profile</u></a></li>
+												   <a class="nav-sub-container" href="#/editprofile"><i class="fa  fa-angle-double-right"></i> Update Profile</a></li>
 												 
 												
 												<li data-toggle="collapse" data-parent="#p2" href="#pv2">
@@ -26,18 +26,19 @@
 										  
 										  <ul class="nav nav-pills nav-stacked collapse in" id="p1">
 											<li data-toggle="collapse" data-parent="#p1" href="#pv1">
-											  <a class="nav-sub-container" href="#/listoffriends""><i class="fa  fa-angle-double-right"></i>My Friends</a></li>
+											  <a class="nav-sub-container" href="#/listoffriends"><i class="fa  fa-angle-double-right"></i>My Friends</a></li>
 											 
 											
-										<li data-toggle="collapse" data-parent="#p1" href="#pv2">
+											
+											<li data-toggle="collapse" data-parent="#p1" href="#pv2">
 											  <a class="nav-sub-container" href="#/suggesteduserslist"><i class="fa  fa-angle-double-right"></i>Users</a></li>
 											 
 
-											
-											<li data-toggle="collapse" data-parent="#p1" href="#pv3">
+										<li data-toggle="collapse" data-parent="#p1" href="#pv3">
 											  <a class="nav-sub-container" href="#/pendingrequests"><i class="fa  fa-angle-double-right"></i> Friend Requests</a></li>
 											  
 											 
+											
 											
 										  </ul>
 										  
@@ -48,15 +49,14 @@
 										
 											 <ul class="nav nav-pills nav-stacked collapse in" id="p3">
 												<li data-toggle="collapse" data-parent="#p3" href="#pv1">
-												  <a class="nav-sub-container" href="#/getallblogs"><i class="fa  fa-angle-double-right"></i> View Blogs</a></li>
+												  <a class="nav-sub-container" href="#/getallblogs"><i class="fa  fa-angle-double-right"></i>View Blogs</a></li>
 												 											
-												
 													<li data-toggle="collapse" data-parent="#p3" href="#pv1">
 												  <a class="nav-sub-container" href="#/getallapprovelblogs" ng-show="currentUser.role=='ADMIN'"><i class="fa  fa-angle-double-right"></i>Approve Blogs</a></li>
-												  
+												
+												
 												 <li data-toggle="collapse" data-parent="#p3" href="#pv3">
-												  <a class="nav-sub-container" href="#/saveblogpost"><i class="fa  fa-angle-double-right"></i> Create Blog</a></li>
-		 
+												  <a class="nav-sub-container" href="#/saveblogpost"><i class="fa  fa-angle-double-right"></i>Create Blog</a></li>
 												
 												
 											  </ul>
@@ -72,6 +72,8 @@
 								<div class="col-md-2">
 					
 					</div>
+					
+					<!-- Middle Body Starts -->
 					<div class="col-md-6">
 						<div class="container">
 						
@@ -83,7 +85,7 @@
 									  <div class="panel-heading">
 										<div class="row">
 										  <div  align="center">
-											<b><i class="fa fa-2x fa-graduation-cap" aria-hidden="true"></i><i>Student Forum - Update Profile</i></b>
+											<b><i class="fa fa-2x fa-graduation-cap" aria-hidden="true"></i><i>Student Forum - Save Job Detail</i></b>
 											
 										  </div>
 										  
@@ -98,45 +100,37 @@
 											<form id="register-form" action="" method="" role="form" >
 											  <div class="form-group">
 												
-												<input type="text" ng-model="user.username" name="" id="username" tabindex="1" class="form-control"  placeholder="Username" value="" required disabled/>
-											  </div>
-											  <div class="form-group">
-												
-												<input type="text" ng-model="user.firstname" name="" id="username" tabindex="1" class="form-control"  placeholder="First Name" value="" required>
-											  </div>
-											  <div class="form-group">
-												
-												<input type="text" ng-model="user.lastname" name="" id="username" tabindex="1" class="form-control"  placeholder="Last Name" value="" required>
-											  </div>
-											  <div class="form-group">
-												
-												<input type="email" ng-model="user.email" name="" id="" tabindex="1" class="form-control"  placeholder="Your Email" value="" required>
+												<input type="text" ng-model="job.jobTitle" name="" id="username" tabindex="1" class="form-control"  placeholder="Enter Job Title" value="" required>
 											  </div>
 											  
 											  <div class="form-group">
-												
-												<input type="password" ng-model="user.password" name="" id="password" tabindex="2" class="form-control"  placeholder="Password" required>
+												<textarea rows="4" cols="15" ng-model="job.jobDescription" name="" id="username" tabindex="1" class="form-control"  placeholder="Enter Job Description" value="" required></textarea>
 											  </div>
+											  
 											  <div class="form-group">
-												
-												<input type="text" ng-model="user.phonenumber" name="" id="" tabindex="2" class="form-control"  placeholder="Phone No.">
+												 <input type="text" ng-model="job.skillRequired" name="" id="username" tabindex="1" class="form-control"  placeholder="Enter Skills Required" value="" required>
 											  </div>
-											   <div class="form-group" ng-hide="currentUser.role=='ADMIN'">
-												<b>Choose Role</b>  :
-												    <label class="radio-inline">
-													  <input type="radio"  value="STUDENT" ng-model="user.role" name="optradio">Student
-													</label>
-													<label class="radio-inline">
-													  <input type="radio" value="ALUMINI" ng-model="user.role" name="optradio">Alumni
-													</label>
-													<label class="radio-inline">
-													  <input type="radio" value="EMPLOYEE" ng-model="user.role" name="optradio">Employee
-												</label>
-											 </div>	
+											  
+											  <div class="form-group">
+					                              <input type="text" ng-model="job.yrsOfExp" name="" id="" tabindex="1" class="form-control"  placeholder="Enter Years of Experience" value="" required>
+											  </div>
+											  
+											  <div class="form-group">
+												 <input type="text" ng-model="job.salary" name="" id="password" tabindex="2" class="form-control"  placeholder="Enter Salary" required>
+											  </div>
+											  
+											  <div class="form-group">
+												 <input type="text" ng-model="job.location" name="" id="" tabindex="2" class="form-control"  placeholder="Enter Location" required>
+											  </div>
+											  
+											  <div class="form-group">
+												 <input type="text" ng-model="job.companyname" name="" id="" tabindex="2" class="form-control"  placeholder="Enter Company Name" required>
+											  </div>
+											   	
 											  <div class="form-group">
 												<div class="row">
 												  <div class="col-sm-6 col-sm-offset-3">
-													<input type="submit" ng-click="updateUser()"  id="register-submit" tabindex="4" class="form-control btn btn-primary"  value="Update">
+													<input type="submit" ng-click="updateJob()"  id="register-submit" tabindex="4" class="form-control btn btn-primary"  value="Update Job">
 												  </div>
 												</div>
 											  </div>
@@ -158,7 +152,7 @@
 					
 					</div>
 					</div>
-					
+									
 			<!-- footer strats here-->
 			<div class="container-fluid bg-yellow mt-30">
 				<div class="container" style="padding:30px">

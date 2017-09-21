@@ -1,8 +1,8 @@
 <div class="container-fluid mt-50 pl-0">
 				<div class="row">
 					<div class="col-md-2 p-0 bg-yellow">
-						<div id="profile" class="pl-50 pr-50 pt-20 pb-30 bg-black">
-							<img src="http://localhost:8081/studentforumbackend/getimage/{{currentUser.username}}" alt="" onerror="this.src='images/user1.png'" width="150"class="img-responsive img-circle"><br>	
+						<div id="profile" class="pl-30 pr-20 pt-20 pb-30 bg-black">
+							<img src="http://localhost:8081/studentforumbackend/getimage/{{currentUser.username}}" alt="" onerror="this.src='images/user2.png'" class="img-responsive img-circle"><br>	
 							<i style="color:#fff"> {{currentUser.firstname}} {{currentUser.lastname}}</i><br>
 							<i style="color:#fff"> {{currentUser.role}}</i>
 						</div>
@@ -26,22 +26,19 @@
 										  
 										  <ul class="nav nav-pills nav-stacked collapse in" id="p1">
 											<li data-toggle="collapse" data-parent="#p1" href="#pv1">
-											  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> View Users</a></li>
+											  <a class="nav-sub-container" href="#/listoffriends"><i class="fa  fa-angle-double-right"></i> My Friends</a></li>
 											 
 											
 											
 											<li data-toggle="collapse" data-parent="#p1" href="#pv2">
-											  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> My Friends</a></li>
+											  <a class="nav-sub-container" href="#/suggesteduserslist"><i class="fa  fa-angle-double-right"></i>Users</a></li>
 											 
 
 											<li data-toggle="collapse" data-parent="#p1" href="#pv3">
-											  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> Friend Requests</a></li>
+											  <a class="nav-sub-container" href="#/pendingrequests"><i class="fa  fa-angle-double-right"></i> Friend Requests</a></li>
 											  
-											 <li data-toggle="collapse" data-parent="#p1" href="#pv4">
-											  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> Approve Users </a></li>
-
-											<li data-toggle="collapse" data-parent="#p1" href="#pv5">
-											  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> Block Users</a></li>
+											 
+											
 											 
 											
 											
@@ -59,8 +56,6 @@
 												 	<li data-toggle="collapse" data-parent="#p3" href="#pv1">
 												  <a class="nav-sub-container" href="#/getallapprovelblogs" ng-show="currentUser.role=='ADMIN'"><i class="fa  fa-angle-double-right"></i>Approve Blogs</a></li>										
 												
-												<li data-toggle="collapse" data-parent="#p3" href="#pv2">
-												  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i>Blogs</a></li>
 												 <li data-toggle="collapse" data-parent="#p3" href="#pv3">
 												  <a class="nav-sub-container" href="#/saveblogpost"><i class="fa  fa-angle-double-right"></i> Create Blog</a></li>
 		 
@@ -78,64 +73,29 @@
 					</div>
 					
 					<!-- Main Body Starts -->
-					<div class="col-md-9">
-						<div class="container">
+					<div class="col-md-10 pt-40 ">
 						
-							<div class="col-md-9">
-								<marquee width="100%"><font size="6" face="Verdana"><b>Welcome {{currentUser.firstname}} {{currentUser.lastname}}, you are now logged in as an {{currentUser.role}}</b></font></marquee><br>
-									<div class="media p-20 bg-bluish">
-									  <div class="media-left">
-										<img src="images/img_avatar1.png" class="media-object" style="width:60px">
-									  </div>
-									  <div class="media-body">
-										<h5 class="media-heading" style="color:#f9e246;">John Doe</h5>
-										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been dummy text of the printing and typesetting industry.</p>
-									  </div>
-									</div>
+						
+							
+							       <marquee width="100%"><font size="6" face="Verdana"><b>Welcome {{currentUser.firstname}} {{currentUser.lastname}}, you are now logged in as an {{currentUser.role}}</b></font></marquee><br><br>
+							      
+							       <h2 class="text-center mb-20">Student Forum - All about Chat, Forum, Blog, Profiles & Many More</h2>
 									
-									<div class="media p-20 bg-bluish">
+									<!--  <div class="media p-20 bg-bluish" ng-repeat="blog in blogPostsApproved">
 									  <div class="media-left">
 										<img src="images/img_avatar1.png" class="media-object" style="width:60px">
 									  </div>
 									  <div class="media-body">
-										<h5 class="media-heading" style="color:#f9e246;">John Doe</h5>
-										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been dummy text of the printing and typesetting industry.</p>
+									    <a href="#/getblogpostbyid/{{blog.id}}"><h2 class="media-heading yellow">{{blog.blogTitle}}</h2></a>
+										<h5 class="media-heading" style="color:#f9e246;">{{blog.postedBy.username}}</h5>
 									  </div>
-									</div>
+									</div>-->
+									<img src="images/digital.jpg" class="img-responsive">
 									
-									<div class="media p-20 bg-bluish">
-									  <div class="media-left">
-										<img src="images/img_avatar1.png" class="media-object" style="width:60px">
-									  </div>
-									  <div class="media-body">
-										<h5 class="media-heading" style="color:#f9e246;">John Doe</h5>
-										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been dummy text of the printing and typesetting industry.</p>
-									  </div>
-									</div>
 									
-									<div class="media p-20 bg-bluish">
-									  <div class="media-left">
-										<img src="images/img_avatar1.png" class="media-object" style="width:60px">
-									  </div>
-									  <div class="media-body">
-										<h5 class="media-heading" style="color:#f9e246;">John Doe</h5>
-										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been dummy text of the printing and typesetting industry.</p>
-									  </div>
-									</div>
-									<div class="media p-20 bg-bluish">
-									  <div class="media-left">
-										<img src="images/img_avatar1.png" class="media-object" style="width:60px">
-									  </div>
-									  <div class="media-body">
-										<h5 class="media-heading" style="color:#f9e246;">John Doe</h5>
-										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been dummy text of the printing and typesetting industry.</p>
-									  </div>
-									</div>
-									
-							</div>
-							<div class="col-md-3">
-							</div>
-						</div>
+							
+							
+						
 					</div>
 				</div>						
 	</div>			

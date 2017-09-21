@@ -37,7 +37,7 @@ app.controller('BlogPostDetailController',function($scope,$location,$routeParams
 		console.log($scope.blogPost)
 		BlogPostService.updateBlogPost($scope.blogPost).then(function(response){
 			console.log(response.status)
-			$location.path('/getallapprovelblogs')
+			$location.path('/getallblogs')
 		},function(response){
 			if(response.status==401)
 				$location.path('/login')

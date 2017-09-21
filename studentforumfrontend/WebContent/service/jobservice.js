@@ -15,6 +15,11 @@ app.factory('JobService',function($http){
 	jobService.getJobDetails=function(id){
 		return $http.get("http://localhost:8081/studentforumbackend/getjobbyid/"+id)
 	}
+	
+	jobService.updateJob=function(job){
+		return $http.put("http://localhost:8081/studentforumbackend/updatejob",job)
+	}
+	
 	return jobService;
 })
 

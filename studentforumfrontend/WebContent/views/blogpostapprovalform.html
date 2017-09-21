@@ -1,8 +1,8 @@
 <div class="container-fluid mt-50 pl-0">
 				<div class="row">
 					<div class="col-md-2 p-0 bg-yellow">
-						<div id="profile" class="pl-50 pr-50 pt-20 pb-30 bg-black">
-							<img src="http://localhost:8081/studentforumbackend/getimage/{{currentUser.username}}" alt="" onerror="this.src='images/img_avatar1.png'" width="150"class="img-responsive img-circle"><br>	
+						<div id="profile" class="pl-30 pr-20 pt-20 pb-30 bg-black">
+							<img src="http://localhost:8081/studentforumbackend/getimage/{{currentUser.username}}" alt="" onerror="this.src='images/user2.png'" class="img-responsive img-circle"><br>
 							<i style="color:#fff"> {{currentUser.firstname}} {{currentUser.lastname}}</i><br>
 							<i style="color:#fff"> {{currentUser.role}}</i>
 						</div>
@@ -35,13 +35,7 @@
 
 											<li data-toggle="collapse" data-parent="#p1" href="#pv3">
 											  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> Friend Requests</a></li>
-											  
-											 <li data-toggle="collapse" data-parent="#p1" href="#pv4">
-											  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> Approve Users </a></li>
-
-											<li data-toggle="collapse" data-parent="#p1" href="#pv5">
-											  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> Block Users</a></li>
-											 
+											  											 
 											
 											
 										  </ul>
@@ -56,10 +50,8 @@
 												  <a class="nav-sub-container" href="#/getallblogs"><i class="fa  fa-angle-double-right"></i> View Blogs</a></li>
 												  
 												 	<li data-toggle="collapse" data-parent="#p3" href="#pv1">
-												  <a class="nav-sub-container" href="#/getallapprovelblogs" ng-show="currentUser.role=='ADMIN'"><i class="fa  fa-angle-double-right"></i>Approve Blogs</a></li>										
+												  <a class="nav-sub-container" href="#/getallapprovelblogs" ng-show="currentUser.role=='ADMIN'"><i class="fa  fa-angle-double-right"></i><u>Approve Blogs</u></a></li>										
 												
-												<li data-toggle="collapse" data-parent="#p3" href="#pv2">
-												  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i>Blogs</a></li>
 												 <li data-toggle="collapse" data-parent="#p3" href="#pv3">
 												  <a class="nav-sub-container" href="#/saveblogpost"><i class="fa  fa-angle-double-right"></i> Create Blog</a></li>
 		 
@@ -91,8 +83,19 @@
 										<h5 class="media-heading yellow letter-spacing "><b>{{blogPost.blogTitle}}</b></h5>
 										<p class="mt-10"><span class="yellow">Posted By :</span>{{blogPost.postedBy.username}} &nbsp;<span class="yellow">On :</span>{{blogPost.postedOn | date:'medium'}}</p>
 										<p class="mt-10">{{blogPost.description}}</p>
-										<a href=""  class="btn btn-success" ng-click="updateBlogPost(true)">Approve</a>&nbsp;&nbsp;
-										<a href="" class="btn btn-danger" ng-click="updateBlogPost(false)">Reject</a>
+									<!--  	<a href=""  class="btn btn-success" ng-click="updateBlogPost(true)">Approve</a>&nbsp;&nbsp;
+										<a href="" class="btn btn-danger" ng-click="updateBlogPost(false)">Reject</a>-->
+										<div class="form-group">
+										<label class="radio-inline" style=color:lightGreen >
+												<input type="radio"  ng-model="blogPost.approved"  value="true" name="optradio">Approve
+										</label>
+										<label class="radio-inline" style=color:Red>
+												<input type="radio"  ng-model="blogPost.approved" value="false" name="optradio">Reject
+										</label>
+										<label class="radio-inline">
+										    <input type="submit" ng-click="updateBlogPost()"  id="register-submit" tabindex="4" class="form-control btn btn-success"  value="Submit">
+										</label>
+										</div>
 									  </div>
 									</div>
 							</div>

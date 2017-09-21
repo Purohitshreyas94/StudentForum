@@ -1,9 +1,10 @@
 <div class="container-fluid mt-50 pl-0">
 				<div class="row">
 					<div class="col-md-2 p-0 bg-yellow">
-						<div id="profile" class="pl-50 pr-50 pt-20 pb-30 bg-black">
-							<img src="../images/shreyu.png" width="150"class="img-responsive img-circle"><br>
-							<i style="color:#fff"> shreyas@gmail.com</i>
+						<div id="profile" class="pl-30 pr-20 pt-20 pb-30 bg-black">
+							<img src="http://localhost:8081/studentforumbackend/getimage/{{currentUser.username}}" alt="" onerror="this.src='images/user2.png'" class="img-responsive img-circle"><br>
+							<i style="color:#fff"> {{currentUser.firstname}} {{currentUser.lastname}}</i><br>
+							<i style="color:#fff"> {{currentUser.role}}</i>
 						</div>
 						<div class="pl-15 ">
 								 <ul class="nav nav-pills nav-stacked" id="stacked-menu">
@@ -57,21 +58,21 @@
 										
 											 <ul class="nav nav-pills nav-stacked collapse in" id="p3">
 												<li data-toggle="collapse" data-parent="#p3" href="#pv1">
-												  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> <u>My Blogs</u></a></li>
+												  <a class="nav-sub-container" href="#/getallblogs"><i class="fa  fa-angle-double-right"></i> <u>View Blogs</u></a></li>
 												 											
+												 
+												  <li data-toggle="collapse" data-parent="#p3" href="#pv1">
+												  <a class="nav-sub-container" href="#/getallapprovelblogs" ng-show="currentUser.role=='ADMIN'"><i class="fa  fa-angle-double-right"></i>Approve Blogs</a></li>											
 												
-												<li data-toggle="collapse" data-parent="#p3" href="#pv2">
-												  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> View Blogs</a></li>
 												 <li data-toggle="collapse" data-parent="#p3" href="#pv3">
-												  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> Create Blog</a></li>
-		 
+												  <a class="nav-sub-container" href="#/saveblogpost"><i class="fa  fa-angle-double-right"></i> Create Blog</a></li>
 												
 												
 											  </ul>
 											
 										</li>
 										
-										<li><a class="nav-container" href="#"><i class="fa fa-file" aria-hidden="true"></i> Forum</a></li>
+										<li><a class="nav-container" href="#" ng-click="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i>Log Out</a></li>
 									  </ul>
 						
 						</div>
@@ -84,32 +85,35 @@
 							</div>
 							
 							<div class="col-md-8 col-sm-12">
-								<h4 class="text-center p-10 border-radius-10"> Java Servlet</h4>
+								<h4 class="text-center p-10 border-radius-10">{{blogPost.blogTitle}}</h4>
 								<div class="mt-20">
-								
-									<p class="mb-20">A Java servlet is a Java program that extends the capabilities of a server. Although servlets can respond to any types of requests, they most commonly implement applications hosted on Web servers. Such Web servlets are the Java counterpart to other dynamic Web content technologies such as PHP and ASP.NET. <br><br>A Java servlet processes or stores a Java class in Java EE that conforms to the Java Servlet API,[2] a standard for implementing Java classes that respond to requests. Servlets could in principle communicate over any client–server protocol, but they are most often used with the HTTP protocol. Thus "servlet" is often used as shorthand for "HTTP servlet".[3] Thus, a software developer may use a servlet to add dynamic content to a web server using the Java platform. The generated content is commonly HTML, but may be other data such as XML.</p>
-									<form action="" method="post">
-										
-										<div class="form-group">
-													  <label>Comments :</label>
-													  <textarea class="form-control" rows="3" id="comment" placeholder="Post Your Comment here"></textarea>
-										</div>
-										<div class="form-group ">
-											<input type="submit" class="btn btn-primary" value="Post">
-											
-										</div>	
-									</form>
-									<div class="mt-50 bg-yellow">
-										<div class="media p-20 bg-bluish">
+									<p class="mt-10"><span class="blue"><b>Created By :&nbsp;</b></span>{{blogPost.postedBy.username}} &nbsp;<span class="blue"><b>On :&nbsp;</b></span>{{blogPost.postedOn | date:'medium'}}</p>
+								     <p class="mb-20">{{blogPost.description}}</p>	
+								   
+									
+									<a ng-click="getComments()"><b>Show All Comments</b></a>
+								   <div class="mt-50 bg-yellow" ng-show="showcomments">
+								    
+										<div class="media p-20 bg-bluish" ng-repeat="blogComment in blogComments">
 									  
 										  <div class="media-body">
-											<h5 class="media-heading yellow"><span class="pull-left">Andy112</span><span class="yellow pull-right" >12:00 AM, 23 Feb 2017</span></h5>
+											<h5 class="media-heading yellow"><span class="pull-left">{{blogComment.commentedBy.username}}</span><span class="yellow pull-right" >{{blogComment.commentedOn | date: 'MM/dd/yyyy'}}</span></h5>
 											
-											<p class="mt-40">Very Nice Information about Java Servlet.</p>											
+											<p class="mt-40">{{blogComment.commentText}}</p>											
 										  </div>
-										</div>
-										
 									</div>
+							      </div><br><br>
+							   
+									<form>
+										<div class="form-group">
+													  <label>Comments :</label>
+													  <textarea class="form-control" rows="3" id="comment" ng-model="blogComment.commentText" placeholder="Post Your Comment here"></textarea>
+										</div>
+										<div class="form-group ">
+											<input type="submit" ng-click="addComment()" class="btn btn-primary" value="Post">
+									   </div>	
+									</form>
+									
 								</div>
 							</div>
 							<div class="col-md-2 hidden-sm">

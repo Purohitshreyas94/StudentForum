@@ -2,7 +2,7 @@
 				<div class="row">
 					<div class="col-md-2 p-0 bg-yellow">
 						<div id="profile" class="pl-30 pr-20 pt-20 pb-30 bg-black">
-							<img src="http://localhost:8081/studentforumbackend/getimage/{{currentUser.username}}" alt="" onerror="this.src='images/user2.png'" class="img-responsive img-circle"><br>
+							<img src="http://localhost:8081/studentforumbackend/getimage/{{currentUser.username}}" alt="" onerror="this.src='images/user2.png'" class="img-responsive img-circle"><br>	
 							<i style="color:#fff"> {{currentUser.firstname}} {{currentUser.lastname}}</i><br>
 							<i style="color:#fff"> {{currentUser.role}}</i>
 						</div>
@@ -12,11 +12,15 @@
 										
 											 <ul class="nav nav-pills nav-stacked collapse in" id="p2">
 												<li data-toggle="collapse" data-parent="#p2" href="#pv1">
-												   <a class="nav-sub-container" href="#/editprofile"><i class="fa  fa-angle-double-right"></i><u>Update Profile</u></a></li>
+												  <a class="nav-sub-container"  href="#/editprofile"><i class="fa  fa-angle-double-right"></i> Update Profile</a></li>
 												 
+												
 												
 												<li data-toggle="collapse" data-parent="#p2" href="#pv2">
 												  <a class="nav-sub-container" href="#/profilepic" ><i class="fa  fa-angle-double-right"></i>Change Profile Picture</a></li>
+												 
+		 
+												
 												
 											  </ul>
 											
@@ -26,18 +30,20 @@
 										  
 										  <ul class="nav nav-pills nav-stacked collapse in" id="p1">
 											<li data-toggle="collapse" data-parent="#p1" href="#pv1">
-											  <a class="nav-sub-container" href="#/listoffriends""><i class="fa  fa-angle-double-right"></i>My Friends</a></li>
+											  <a class="nav-sub-container" href="#/listoffriends"><i class="fa  fa-angle-double-right"></i> My Friends</a></li>
 											 
 											
-										<li data-toggle="collapse" data-parent="#p1" href="#pv2">
-											  <a class="nav-sub-container" href="#/suggesteduserslist"><i class="fa  fa-angle-double-right"></i>Users</a></li>
+											
+											<li data-toggle="collapse" data-parent="#p1" href="#pv2">
+											  <a class="nav-sub-container" href="#/suggesteduserslist"><i class="fa  fa-angle-double-right"></i><u>Users</u></a></li>
 											 
 
-											
 											<li data-toggle="collapse" data-parent="#p1" href="#pv3">
 											  <a class="nav-sub-container" href="#/pendingrequests"><i class="fa  fa-angle-double-right"></i> Friend Requests</a></li>
 											  
 											 
+											 
+											
 											
 										  </ul>
 										  
@@ -51,9 +57,9 @@
 												  <a class="nav-sub-container" href="#/getallblogs"><i class="fa  fa-angle-double-right"></i> View Blogs</a></li>
 												 											
 												
-													<li data-toggle="collapse" data-parent="#p3" href="#pv1">
+												<li data-toggle="collapse" data-parent="#p3" href="#pv1">
 												  <a class="nav-sub-container" href="#/getallapprovelblogs" ng-show="currentUser.role=='ADMIN'"><i class="fa  fa-angle-double-right"></i>Approve Blogs</a></li>
-												  
+												 
 												 <li data-toggle="collapse" data-parent="#p3" href="#pv3">
 												  <a class="nav-sub-container" href="#/saveblogpost"><i class="fa  fa-angle-double-right"></i> Create Blog</a></li>
 		 
@@ -69,96 +75,38 @@
 						</div>
 					
 					</div>
-								<div class="col-md-2">
-					
-					</div>
-					<div class="col-md-6">
-						<div class="container">
-						
-							
-							<div id="regContainer">
-								  <div class="row">
-								  <div class="col-md-6">
-									<div class="panel panel-login">
-									  <div class="panel-heading">
-										<div class="row">
-										  <div  align="center">
-											<b><i class="fa fa-2x fa-graduation-cap" aria-hidden="true"></i><i>Student Forum - Update Profile</i></b>
-											
-										  </div>
-										  
+					<div class="col-md-10">
+						<br>
+						<h2 class="text-center p-10 border-radius-10"> List Of Friends</h2><br>
+						<div class="container p-0">
+							<div class="row mb-20">
+								<div class="col-md-4 col-sm-4 mb-10" ng-repeat="user in suggestedusers">
+									<div class="col-md-12 p-5 box-shadow">
+										<div class="col-md-5">
+											<img src="images/shreyu.png" width="150" class="img-responsive img-circle">
 										</div>
-										
-										
-									  </div>
-									  <div class="panel-body">
-										<div class="row">
-										  <div class="col-lg-12">
-											
-											<form id="register-form" action="" method="" role="form" >
-											  <div class="form-group">
-												
-												<input type="text" ng-model="user.username" name="" id="username" tabindex="1" class="form-control"  placeholder="Username" value="" required disabled/>
-											  </div>
-											  <div class="form-group">
-												
-												<input type="text" ng-model="user.firstname" name="" id="username" tabindex="1" class="form-control"  placeholder="First Name" value="" required>
-											  </div>
-											  <div class="form-group">
-												
-												<input type="text" ng-model="user.lastname" name="" id="username" tabindex="1" class="form-control"  placeholder="Last Name" value="" required>
-											  </div>
-											  <div class="form-group">
-												
-												<input type="email" ng-model="user.email" name="" id="" tabindex="1" class="form-control"  placeholder="Your Email" value="" required>
-											  </div>
-											  
-											  <div class="form-group">
-												
-												<input type="password" ng-model="user.password" name="" id="password" tabindex="2" class="form-control"  placeholder="Password" required>
-											  </div>
-											  <div class="form-group">
-												
-												<input type="text" ng-model="user.phonenumber" name="" id="" tabindex="2" class="form-control"  placeholder="Phone No.">
-											  </div>
-											   <div class="form-group" ng-hide="currentUser.role=='ADMIN'">
-												<b>Choose Role</b>  :
-												    <label class="radio-inline">
-													  <input type="radio"  value="STUDENT" ng-model="user.role" name="optradio">Student
-													</label>
-													<label class="radio-inline">
-													  <input type="radio" value="ALUMINI" ng-model="user.role" name="optradio">Alumni
-													</label>
-													<label class="radio-inline">
-													  <input type="radio" value="EMPLOYEE" ng-model="user.role" name="optradio">Employee
-												</label>
-											 </div>	
-											  <div class="form-group">
-												<div class="row">
-												  <div class="col-sm-6 col-sm-offset-3">
-													<input type="submit" ng-click="updateUser()"  id="register-submit" tabindex="4" class="form-control btn btn-primary"  value="Update">
-												  </div>
-												</div>
-											  </div>
-											</form>
-										  </div>
+										<div class="col-md-7 pb-10">
+											<b>{{user.firstname}}&nbsp; {{user.lastname}} </b><br>
+											<b>Online:-</b>&nbsp;<b ng-if="user.online">Yes</b><b ng-if="!user.online"></b>No<br>
+											<b>Role:-</b>&nbsp;{{user.role}}<br><br>
+											<button type="button" ng-click="friendRequest(user.username)" class="btn btn-sm btn-primary">Add Friend</button>
 										</div>
-									  </div>
 									</div>
-								  </div>
 								</div>
-							  </div>
+								
+								
+								
+							</div>
+							
+							
 							
 						</div>
-					              
-							
-						</div>
 					</div>
-					<div class="col-md-2">
-					
-					</div>
-					</div>
-					
+				</div>
+			
+			
+			</div>
+			
 			<!-- footer strats here-->
 			<div class="container-fluid bg-yellow mt-30">
 				<div class="container" style="padding:30px">

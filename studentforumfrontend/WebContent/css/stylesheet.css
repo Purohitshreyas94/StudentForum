@@ -8,6 +8,70 @@
    height:100%;
  min-height:100%;
  }
+ 
+ 
+ /*searchbox*/
+ @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+/* Expandable search box */
+/* Note: don't change 0.8s in transition. */
+/* --------------------- */
+input.search-text {
+	color: #222;
+	position:relative;
+	z-index:5;
+	-webkit-transition: z-index 0.8s, width 0.5s, background 0.3s ease, border 0.3s;
+	transition: z-index 0.8s, width 0.5s, background 0.3s ease, border 0.3s;
+	height: 45px;
+	width: 0;
+	margin: 0;
+	padding: 5px 0 5px 40px;
+	box-sizing: border-box;
+	font-size: 16px;
+	font-size: 1rem;
+	cursor: pointer;
+	border-radius: 30px;
+	border: 1px solid transparent;
+	background: url(../images/search.png) no-repeat left 15px center transparent;
+	
+  background-size:24px;
+}
+input.search-text:focus {
+	z-index:3; 
+	width: 270px;
+	border: 1px solid #666;  
+	background-color: white;
+	outline: none;
+	cursor:auto;
+	padding-right: 10px;
+}
+
+input.search-submit {
+	position: relative;
+	z-index: 4;
+	top:17px;
+	left: 19px;
+	width: 45px;
+	height: 65px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	border-radius: 30px;
+	cursor: pointer; 
+	background: none;
+}
+
+input.search-text::-webkit-search-cancel-button {
+	cursor:pointer;
+}
+/* Ends Here */
+
+
+
+
+
+ 
   #body-bg-image
   {
   background-image:url("../images/home-background-img2.png") ;
@@ -204,6 +268,25 @@ color:#f9e246;
 {
 letter-spacing:1px;
 }
+.big
+{
+font-size:24px;
+}
+.bg-grey
+{
+background-color:#eee;
+}
+.bg-grey-1
+{
+background-color:#ccc;
+}
+.box-shadow
+{
+border-top:1px solid #eee;
+ -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.5);
+}
 /* register & login form */
 #regContainer{
     margin-top: 2%;  
@@ -370,24 +453,6 @@ letter-spacing:1px;
   color:#e20e25;
   }
   
-  
-  
-  /****************************************************************************************************************************************************/
-  /*My Own CSS Code*/
- 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  .glyphicon.glyphicon-edit {
+    font-size: 23px;
+}

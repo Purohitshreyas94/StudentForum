@@ -14,8 +14,8 @@ app.controller('UserController',function(UserService,$scope,$rootScope,$location
 	}
 	$scope.registerUser=function(){
 		UserService.registerUser($scope.user).then(function(response){
-			$rootScope.message="Registered successfully.. please login again"
-			console.log($rootScope.message)
+			alert('Registered successfully.. Please login.. ')
+			console.log($scope.message)
 			$location.path('/login')
 		},function(response){
 			console.log(response.status)

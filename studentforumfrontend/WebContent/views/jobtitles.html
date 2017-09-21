@@ -1,8 +1,8 @@
 <div class="container-fluid mt-50 pl-0">
 				<div class="row">
 					<div class="col-md-2 p-0 bg-yellow">
-						<div id="profile" class="pl-50 pr-50 pt-20 pb-30 bg-black">
-							<img src="http://localhost:8081/studentforumbackend/getimage/{{currentUser.username}}" alt="" onerror="this.src='images/img_avatar1.png'" width="150"class="img-responsive img-circle"><br>	
+						<div id="profile" class="pl-30 pr-20 pt-20 pb-30 bg-black">
+							<img src="http://localhost:8081/studentforumbackend/getimage/{{currentUser.username}}" alt="" onerror="this.src='images/user2.png'" class="img-responsive img-circle"><br>
 							<i style="color:#fff"> {{currentUser.firstname}} {{currentUser.lastname}}</i><br>
 							<i style="color:#fff"> {{currentUser.role}}</i>
 						</div>
@@ -26,22 +26,17 @@
 										  
 										  <ul class="nav nav-pills nav-stacked collapse in" id="p1">
 											<li data-toggle="collapse" data-parent="#p1" href="#pv1">
-											  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> View Users</a></li>
+											  <a class="nav-sub-container" href="#/listoffriends"><i class="fa  fa-angle-double-right"></i> My Friends</a></li>
 											 
 											
 											
 											<li data-toggle="collapse" data-parent="#p1" href="#pv2">
-											  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> My Friends</a></li>
+											  <a class="nav-sub-container" href="#/suggesteduserslist"><i class="fa  fa-angle-double-right"></i>Users</a></li>
 											 
 
 											<li data-toggle="collapse" data-parent="#p1" href="#pv3">
-											  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> Friend Requests</a></li>
-											  
-											 <li data-toggle="collapse" data-parent="#p1" href="#pv4">
-											  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> Approve Users </a></li>
-
-											<li data-toggle="collapse" data-parent="#p1" href="#pv5">
-											  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> Block Users</a></li>
+											  <a class="nav-sub-container" href="#/pendingrequests"><i class="fa  fa-angle-double-right"></i> Friend Requests</a></li>
+											
 											 
 											
 											
@@ -54,13 +49,13 @@
 										
 											 <ul class="nav nav-pills nav-stacked collapse in" id="p3">
 												<li data-toggle="collapse" data-parent="#p3" href="#pv1">
-												  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> My Blogs</a></li>
-												 											
+												  <a class="nav-sub-container" href="#/getallblogs"><i class="fa  fa-angle-double-right"></i> View Blogs</a></li>
+												  
+												 	<li data-toggle="collapse" data-parent="#p3" href="#pv1">
+												  <a class="nav-sub-container" href="#/getallapprovelblogs" ng-show="currentUser.role=='ADMIN'"><i class="fa  fa-angle-double-right"></i>Approve Blogs</a></li>										
 												
-												<li data-toggle="collapse" data-parent="#p3" href="#pv2">
-												  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> View Blogs</a></li>
 												 <li data-toggle="collapse" data-parent="#p3" href="#pv3">
-												  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> Create Blog</a></li>
+												  <a class="nav-sub-container" href="#/saveblogpost"><i class="fa  fa-angle-double-right"></i> Create Blog</a></li>
 		 
 												
 												
@@ -80,22 +75,27 @@
 							
 								
 								<div class="row">
-									<div class="col-md-5 ">
+									<div class="col-md-3 ">
 									<h2 >JOB DETAILS</h2>
 									</div>
 										
-									<div class="col-md-6 pt-20 text-center">
-										<div class="input-group">
+									<div class="col-md-6 ">
+										<!--<div class="input-group">
 											<input ng-model="searchText" class="form-control" placeholder="Search for Jobs...">
 											  <span class="input-group-btn">
 												<button class="btn btn-search"><i class="fa fa-search fa-fw"></i> </button>
 											  </span>
-										</div> 
+										</div> -->
+										<div class="input-group">
+										
+											<form  role="search" class="search-form">
+													 <input type="submit" value="" class="search-submit"> 
+													<input ng-model="searchText" name="q" class="search-text" placeholder="Search for Jobs..." autocomplete="off">
+											</form>
+										</div>
 										
 									</div>
-									<div class="col-md-1 ">
-										&nbsp;
-									</div>	
+									
 							    </div>
 								<div class="p-10"></div>
 								<div class="row">
@@ -107,15 +107,16 @@
 													<th>Job Title</th>
 													<th>Company Name</th>
 													<th>Posted On</th>
-													
+													<th ng-show="currentUser.role=='ADMIN'">Update</th>
 													
 												  </tr>
 												</thead>
 												<tbody>
 												  <tr ng-repeat = "job in jobs | filter : searchText">	
-													<td><a href = "" ng-click = "getJobDetails(job.id)">{{job.jobTitle}}</a></td>
+													<td><a href = "" ng-click = "getJobDetails(job.id)"><b>{{job.jobTitle}}</b></a></td>
 													<td>{{job.companyname}}</td>
 													<td>{{job.postedOn | date : "dd MMMM yyyy"}}</td>
+													<td ng-show="currentUser.role=='ADMIN'"><a href="#/updatejob/{{job.id}}"> <span class="glyphicon glyphicon-edit"></span></a></td>
 													
 													
 												  </tr>

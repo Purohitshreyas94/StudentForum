@@ -6,7 +6,8 @@ var app=angular.module("app",['ngRoute','ngCookies'])
 app.config(function($routeProvider){
 	$routeProvider
 	.when('/home',{
-		templateUrl:'views/home.html'
+		templateUrl:'views/home.html',
+		controller:'BlogPostController'
 	})
 	.when('/aboutus',{
 		templateUrl:'views/aboutus.html'
@@ -28,6 +29,10 @@ app.config(function($routeProvider){
      
 	.when('/savejob',{
 		templateUrl:'views/jobform.html',
+		controller:'JobController'
+	})
+	.when('/updatejob/:id',{
+		templateUrl:'views/updatejob.html',
 		controller:'JobController'
 	})
 	.when('/getalljobs',{
@@ -57,7 +62,23 @@ app.config(function($routeProvider){
 	  .when('/profilepic',{
 		templateUrl:'views/profpic2.html'
 	})
-
+       .when('/suggesteduserslist',{
+		templateUrl:'views/listofsuggestedusers.html',
+		controller:'FriendController'
+	})
+	.when('/pendingrequests',{
+		templateUrl:'views/listofpendingrequests.html',
+		controller:'FriendController'
+	})
+	.when('/listoffriends',{
+		templateUrl:'views/listoffriends.html',
+		controller:'FriendController'
+	})
+	 .when('/chat',{
+		templateUrl:'views/chat.html',
+		controller:'ChatController'
+	})
+	
 	.otherwise({
 		templateUrl:'views/login.html',
 		controller:'UserController'

@@ -1,8 +1,8 @@
 <div class="container-fluid mt-50 pl-0">
 				<div class="row">
 					<div class="col-md-2 p-0 bg-yellow">
-						<div id="profile" class="pl-50 pr-50 pt-20 pb-30 bg-black">
-							<img src="http://localhost:8081/studentforumbackend/getimage/{{currentUser.username}}" alt="" onerror="this.src='images/img_avatar1.png'" width="150"class="img-responsive img-circle"><br>	
+						<div id="profile" class="pl-30 pr-20 pt-20 pb-30 bg-black">
+							<img src="http://localhost:8081/studentforumbackend/getimage/{{currentUser.username}}" alt="" onerror="this.src='images/user2.png'" class="img-responsive img-circle"><br>
 							<i style="color:#fff"> {{currentUser.firstname}} {{currentUser.lastname}}</i><br>
 							<i style="color:#fff"> {{currentUser.role}}</i>
 						</div>
@@ -30,22 +30,16 @@
 										  
 										  <ul class="nav nav-pills nav-stacked collapse in" id="p1">
 											<li data-toggle="collapse" data-parent="#p1" href="#pv1">
-											  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> View Users</a></li>
+											  <a class="nav-sub-container" href="#/listoffriends"><i class="fa  fa-angle-double-right"></i> My Friends</a></li>
 											 
 											
 											
 											<li data-toggle="collapse" data-parent="#p1" href="#pv2">
-											  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> My Friends</a></li>
+											  <a class="nav-sub-container" href="#/suggesteduserslist"><i class="fa  fa-angle-double-right"></i>Users</a></li>
 											 
 
 											<li data-toggle="collapse" data-parent="#p1" href="#pv3">
-											  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> Friend Requests</a></li>
-											  
-											 <li data-toggle="collapse" data-parent="#p1" href="#pv4">
-											  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> Approve Users </a></li>
-
-											<li data-toggle="collapse" data-parent="#p1" href="#pv5">
-											  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> Block Users</a></li>
+											  <a class="nav-sub-container" href="#/pendingrequests"><i class="fa  fa-angle-double-right"></i> Friend Requests</a></li>
 											 
 											
 											
@@ -63,10 +57,8 @@
 												  <li data-toggle="collapse" data-parent="#p3" href="#pv1">
 												  <a class="nav-sub-container" href="#/getallapprovelblogs" ng-show="currentUser.role=='ADMIN'"><i class="fa  fa-angle-double-right"></i>Approve Blogs</a></li>											
 												
-												<li data-toggle="collapse" data-parent="#p3" href="#pv2">
-												  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> <u>Blogs</u></a></li>
 												 <li data-toggle="collapse" data-parent="#p3" href="#pv3">
-												  <a class="nav-sub-container" href="#"><i class="fa  fa-angle-double-right"></i> Create Blog</a></li>
+												  <a class="nav-sub-container" href="#/saveblogpost"><i class="fa  fa-angle-double-right"></i> Create Blog</a></li>
 		 
 												
 												
@@ -89,11 +81,11 @@
 							
 							<div class="col-md-8 col-sm-12">
 								<h2 class="text-center mb-20"> View Blogs</h2>
-									<div class="media p-20 bg-bluish">
+									<div class="media p-20 bg-bluish" ng-repeat="blog in blogPostsApproved">
 									  
 									  <div class="media-body">
-										<h2 class="media-heading yellow">Java Servlet</h2>
-										<p class="mt-20"><span class="yellow">Posted By :</span> Shreyas Purohit &nbsp;<span class="yellow">On</span> 12:00 AM, 23 Feb 2017</p>
+									    <a href="#/getblogpostbyid/{{blog.id}}"><h2 class="media-heading yellow">{{blog.blogTitle}}</h2></a>
+										<p class="mt-20"><span class="yellow">Posted By : &nbsp;</span>{{blog.postedBy.username}} &nbsp;<span class="yellow">On : &nbsp;</span> {{blog.postedOn | date:"dd MMMM yyyy"}}</p>
 									  </div>
 									</div>
 									

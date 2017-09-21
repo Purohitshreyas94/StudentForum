@@ -29,7 +29,6 @@ private SessionFactory sessionFactory;
 	
 	public User validateEmail(String email) {
 		Session session=sessionFactory.getCurrentSession();
-		@SuppressWarnings("rawtypes")
 		Query query=session.createQuery("from User where email=?");
 		query.setString(0,email);
 		User user=(User)query.uniqueResult();

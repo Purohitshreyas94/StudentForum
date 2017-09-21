@@ -2,6 +2,7 @@ package com.niit.dao;
 
 import java.util.List;
 
+
 import com.niit.model.Job;
 
 public interface JobDao {
@@ -11,5 +12,6 @@ public interface JobDao {
 	List<Job> getAllJobs();
 
 	Job getJobById(int id);
-
+  
+	void updateJob(Job job);
 }

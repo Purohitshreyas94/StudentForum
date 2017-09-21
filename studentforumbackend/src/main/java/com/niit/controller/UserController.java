@@ -81,6 +81,7 @@ public class UserController
     	session.invalidate();
     	return new ResponseEntity<Void>(HttpStatus.OK);
     }
+    
     @RequestMapping(value="/getuser",method=RequestMethod.GET)
     public ResponseEntity<?> getUser(HttpSession session){
     	if(session.getAttribute("username")==null){

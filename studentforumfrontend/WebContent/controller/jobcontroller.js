@@ -1,8 +1,18 @@
 /**
  * Job Controller
  */
-app.controller('JobController',function(JobService,$scope,$location){
-	$scope.showJobDetails=false;
+app.controller('JobController',function(JobService,$scope,$routeParams,$location){
+	var id=$routeParams.id
+$scope.showJobDetails=false;
+	
+	$scope.job=JobService.getJobDetails(id).then(function(response){
+		$scope.job=response.data;
+		console.log(response.data)
+	},function(response){
+		console.log(response.status)
+		if(response.status==401)
+			$location.path('/login')
+	})
 	
 	function getAllJobs(){
 		JobService.getAllJobs().then(function(response){
@@ -38,6 +48,18 @@ app.controller('JobController',function(JobService,$scope,$location){
 			$location.path('/login')
 		})
 	}	
+	
+	$scope.updateJob=function(){
+		console.log($scope.job)
+		JobService.updateJob($scope.job).then(function(response){
+			alert(" Job Updated successfully")
+			console.log(response.status)
+			$location.path('/getalljobs')
+		},function(response){
+			if(response.status==401)
+				$location.path('/login')
+		})
+	}
 getAllJobs()	
 	
 })

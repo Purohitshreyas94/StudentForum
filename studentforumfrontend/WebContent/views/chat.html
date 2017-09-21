@@ -12,11 +12,15 @@
 										
 											 <ul class="nav nav-pills nav-stacked collapse in" id="p2">
 												<li data-toggle="collapse" data-parent="#p2" href="#pv1">
-												   <a class="nav-sub-container" href="#/editprofile"><i class="fa  fa-angle-double-right"></i><u>Update Profile</u></a></li>
+												  <a class="nav-sub-container" href="#/editprofile"><i class="fa  fa-angle-double-right"></i> Update Profile</a></li>
 												 
 												
+												
 												<li data-toggle="collapse" data-parent="#p2" href="#pv2">
-												  <a class="nav-sub-container" href="#/profilepic" ><i class="fa  fa-angle-double-right"></i>Change Profile Picture</a></li>
+												  <a class="nav-sub-container" href="#/profilepic"><i class="fa  fa-angle-double-right"></i>Change Profile Picture</a></li>
+												 
+		 
+												
 												
 											  </ul>
 											
@@ -26,19 +30,18 @@
 										  
 										  <ul class="nav nav-pills nav-stacked collapse in" id="p1">
 											<li data-toggle="collapse" data-parent="#p1" href="#pv1">
-											  <a class="nav-sub-container" href="#/listoffriends""><i class="fa  fa-angle-double-right"></i>My Friends</a></li>
+											  <a class="nav-sub-container" href="#/listoffriends"><i class="fa  fa-angle-double-right"></i>My Friends</a></li>
 											 
 											
-										<li data-toggle="collapse" data-parent="#p1" href="#pv2">
+											
+											<li data-toggle="collapse" data-parent="#p1" href="#pv2">
 											  <a class="nav-sub-container" href="#/suggesteduserslist"><i class="fa  fa-angle-double-right"></i>Users</a></li>
 											 
 
-											
 											<li data-toggle="collapse" data-parent="#p1" href="#pv3">
 											  <a class="nav-sub-container" href="#/pendingrequests"><i class="fa  fa-angle-double-right"></i> Friend Requests</a></li>
-											  
-											 
-											
+									
+													
 										  </ul>
 										  
 										</li>
@@ -48,14 +51,14 @@
 										
 											 <ul class="nav nav-pills nav-stacked collapse in" id="p3">
 												<li data-toggle="collapse" data-parent="#p3" href="#pv1">
-												  <a class="nav-sub-container" href="#/getallblogs"><i class="fa  fa-angle-double-right"></i> View Blogs</a></li>
+												  <a class="nav-sub-container" href="#/getallblogs"><i class="fa  fa-angle-double-right"></i>View Blogs</a></li>
 												 											
-												
 													<li data-toggle="collapse" data-parent="#p3" href="#pv1">
 												  <a class="nav-sub-container" href="#/getallapprovelblogs" ng-show="currentUser.role=='ADMIN'"><i class="fa  fa-angle-double-right"></i>Approve Blogs</a></li>
-												  
+												
+												
 												 <li data-toggle="collapse" data-parent="#p3" href="#pv3">
-												  <a class="nav-sub-container" href="#/saveblogpost"><i class="fa  fa-angle-double-right"></i> Create Blog</a></li>
+												  <a class="nav-sub-container" href="#/saveblogpost"><i class="fa  fa-angle-double-right"></i>Create Blog</a></li>
 		 
 												
 												
@@ -69,96 +72,63 @@
 						</div>
 					
 					</div>
-								<div class="col-md-2">
-					
-					</div>
-					<div class="col-md-6">
+					<div class="col-md-10 p-5">
+						<img src="images/chatting.png" class="img-responsive">
 						<div class="container">
-						
+							<div class="col-md-3 hidden-sm">
+							</div>
 							
-							<div id="regContainer">
-								  <div class="row">
-								  <div class="col-md-6">
-									<div class="panel panel-login">
-									  <div class="panel-heading">
-										<div class="row">
-										  <div  align="center">
-											<b><i class="fa fa-2x fa-graduation-cap" aria-hidden="true"></i><i>Student Forum - Update Profile</i></b>
-											
-										  </div>
-										  
+							<div class="col-md-6 col-sm-12 bg-grey border-radius-10">
+								<h2 class="text-center"> Chat</h2>
+								<div class="mt-20">
+									<form role="form" id="chatForm" ng-submit="sendMessage(chat)">
+                                 <div class="alert alert-info notification" id="joinedChat" ng-if="latestUser" ng-animate="{enter: 'fade', leave: 'fade'}">
+                                            {{latestUser}} has joined the chat!
+                                  </div>
+										<div class="form-group">
+										  <label for="to">Send To:</label>
+										  <select class="form-control" id="to" name="to" ng-model="chat.to">
+											<option value="">Select Recipient</option>
+											<option value="all">All Users</option>
+											<option ng-repeat="user in users" value="{{user}}" ng-hide="currentUser.username==user">{{capitalize(user)}}</option>
+										  </select>
 										</div>
-										
-										
-									  </div>
-									  <div class="panel-body">
-										<div class="row">
-										  <div class="col-lg-12">
-											
-											<form id="register-form" action="" method="" role="form" >
-											  <div class="form-group">
-												
-												<input type="text" ng-model="user.username" name="" id="username" tabindex="1" class="form-control"  placeholder="Username" value="" required disabled/>
-											  </div>
-											  <div class="form-group">
-												
-												<input type="text" ng-model="user.firstname" name="" id="username" tabindex="1" class="form-control"  placeholder="First Name" value="" required>
-											  </div>
-											  <div class="form-group">
-												
-												<input type="text" ng-model="user.lastname" name="" id="username" tabindex="1" class="form-control"  placeholder="Last Name" value="" required>
-											  </div>
-											  <div class="form-group">
-												
-												<input type="email" ng-model="user.email" name="" id="" tabindex="1" class="form-control"  placeholder="Your Email" value="" required>
-											  </div>
-											  
-											  <div class="form-group">
-												
-												<input type="password" ng-model="user.password" name="" id="password" tabindex="2" class="form-control"  placeholder="Password" required>
-											  </div>
-											  <div class="form-group">
-												
-												<input type="text" ng-model="user.phonenumber" name="" id="" tabindex="2" class="form-control"  placeholder="Phone No.">
-											  </div>
-											   <div class="form-group" ng-hide="currentUser.role=='ADMIN'">
-												<b>Choose Role</b>  :
-												    <label class="radio-inline">
-													  <input type="radio"  value="STUDENT" ng-model="user.role" name="optradio">Student
-													</label>
-													<label class="radio-inline">
-													  <input type="radio" value="ALUMINI" ng-model="user.role" name="optradio">Alumni
-													</label>
-													<label class="radio-inline">
-													  <input type="radio" value="EMPLOYEE" ng-model="user.role" name="optradio">Employee
-												</label>
-											 </div>	
-											  <div class="form-group">
-												<div class="row">
-												  <div class="col-sm-6 col-sm-offset-3">
-													<input type="submit" ng-click="updateUser()"  id="register-submit" tabindex="4" class="form-control btn btn-primary"  value="Update">
-												  </div>
-												</div>
-											  </div>
-											</form>
-										  </div>
+										<div class="form-group">
+													  <label for="comment">Message</label>
+													  <textarea class="form-control" name="message" placeholder="Please type Message here" rows="5" id="comment" ng-model="chat.message"></textarea>
 										</div>
-									  </div>
-									</div>
-								  </div>
+										<div class="form-group text-center">
+											<input type="submit" ng-focus="focus-on-click" name="send" class="btn btn-primary" value="Send..">
+											
+										</div>	
+									</form>
 								</div>
-							  </div>
-							
+							</div>
+							<div class="col-md-3 hidden-sm">
+							</div>
 						</div>
-					              
-							
+						
+						<div class="mb-100">
+							<div class="row">
+   		                        <div class="col-md-12" id="chats" >
+	   			                    <div ng-repeat="chat in chats | reverse" class="chat {{chat.direction}}" ng-class="{'broadcast': chat.broadcast}">
+	          	          	               <span class="from">
+							        	                {{chat.from}}
+							       		    <small ng-if="chat.broadcast">BROADCAST</small>
+							              </span>
+							        <span class="message">{{chat.message}}</span>
+		                             </div>
+   		                         </div>
+   		
+                            </div>	
+								
 						</div>
 					</div>
-					<div class="col-md-2">
-					
-					</div>
-					</div>
-					
+				</div>
+			
+			
+			</div>
+			
 			<!-- footer strats here-->
 			<div class="container-fluid bg-yellow mt-30">
 				<div class="container" style="padding:30px">
