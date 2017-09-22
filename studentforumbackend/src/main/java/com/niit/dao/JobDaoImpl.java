@@ -37,6 +37,11 @@ public class JobDaoImpl implements JobDao {
 			session.update(job);
 			
 		}
+		
+		public void deleteJob(Job job) {
+			Session session=sessionFactory.getCurrentSession();
+			session.delete(job);
+		}
 
 
 }

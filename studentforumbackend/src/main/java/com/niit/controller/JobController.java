@@ -86,9 +86,20 @@ public class JobController
 		     jobDao.updateJob(job);
 			return new ResponseEntity<Job>(job,HttpStatus.OK);
 		}catch(Exception e){
-			Error error=new Error(6,"Unable to update blog post "+ e.getMessage());
+			Error error=new Error(6,"Unable to update Job "+ e.getMessage());
 			return new ResponseEntity<Error>(error,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+	}
+	
+	@RequestMapping(value="/deletejob/{id}",method=RequestMethod.GET)
+	public ResponseEntity<?>deleteJob(@PathVariable int id,HttpSession session){
+		if(session.getAttribute("username")==null){
+			Error error=new Error(5,"UnAuthorized User");
+			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);//401 - 2nd call back func will be executed
+		}
+			Job job=jobDao.getJobById(id);
+			jobDao.deleteJob(job);
+			return new ResponseEntity<Job>(job,HttpStatus.OK);
 	}
 
 }

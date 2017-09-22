@@ -20,6 +20,10 @@ app.factory('JobService',function($http){
 		return $http.put("http://localhost:8081/studentforumbackend/updatejob",job)
 	}
 	
+	jobService.deleteJob=function(id){
+		return $http.get("http://localhost:8081/studentforumbackend/deletejob/"+id)
+	}
 	return jobService;
+	
 })
 

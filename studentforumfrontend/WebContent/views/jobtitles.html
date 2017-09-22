@@ -108,6 +108,7 @@
 													<th>Company Name</th>
 													<th>Posted On</th>
 													<th ng-show="currentUser.role=='ADMIN'">Update</th>
+													<th ng-show="currentUser.role=='ADMIN'">Delete</th>
 													
 												  </tr>
 												</thead>
@@ -117,6 +118,7 @@
 													<td>{{job.companyname}}</td>
 													<td>{{job.postedOn | date : "dd MMMM yyyy"}}</td>
 													<td ng-show="currentUser.role=='ADMIN'"><a href="#/updatejob/{{job.id}}"> <span class="glyphicon glyphicon-edit"></span></a></td>
+													<td ng-show="currentUser.role=='ADMIN'"><a href="" ng-click = "deleteJob(job.id)"><span class="glyphicon glyphicon-trash"></span></a></td>
 													
 													
 												  </tr>

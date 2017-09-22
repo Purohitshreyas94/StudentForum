@@ -60,6 +60,18 @@ $scope.showJobDetails=false;
 				$location.path('/login')
 		})
 	}
+	
+	$scope.deleteJob=function(id){
+		JobService.deleteJob(id).then(function(response){
+			alert(" Job Deleted successfully")
+			$scope.job=response.data
+			getAllJobs()
+			console.log(response.status)
+		},function(response){
+			if(response.status==401)
+				$location.path('/login')
+		})
+	}
 getAllJobs()	
 	
 })

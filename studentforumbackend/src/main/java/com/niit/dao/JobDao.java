@@ -14,4 +14,6 @@ public interface JobDao {
 	Job getJobById(int id);
   
 	void updateJob(Job job);
+	
+	 void deleteJob(Job job);
 }
