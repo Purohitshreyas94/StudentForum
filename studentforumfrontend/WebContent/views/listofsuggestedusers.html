@@ -24,6 +24,7 @@
 												
 											  </ul>
 											
+						
 										</li>
 										<li>
 										  <a class="nav-container" data-toggle="collapse" data-parent="#stacked-menu" href="#p1"> <i class="fa fa-users" aria-hidden="true"></i> Users<div class="caret-container"><span class="caret arrow"></span></div></a>    
@@ -77,13 +78,13 @@
 					</div>
 					<div class="col-md-10">
 						<br>
-						<h2 class="text-center p-10 border-radius-10"> List Of Friends</h2><br>
+						<h2 class="text-center p-10 border-radius-10"> List Of Suggested Friends</h2><br>
 						<div class="container p-0">
 							<div class="row mb-20">
 								<div class="col-md-4 col-sm-4 mb-10" ng-repeat="user in suggestedusers">
 									<div class="col-md-12 p-5 box-shadow">
 										<div class="col-md-5">
-											<img src="images/shreyu.png" width="150" class="img-responsive img-circle">
+											<img src="http://localhost:8081/studentforumbackend/getimage/{{user.username}}" alt="" onerror="this.src='images/user2.png'" width="150" class="img-responsive img-circle">
 										</div>
 										<div class="col-md-7 pb-10">
 											<b>{{user.firstname}}&nbsp; {{user.lastname}} </b><br>
