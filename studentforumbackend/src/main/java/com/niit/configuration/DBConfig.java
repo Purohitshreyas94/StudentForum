@@ -19,6 +19,7 @@ import com.niit.model.BlogPost;
 import com.niit.model.Chat;
 import com.niit.model.Friend;
 import com.niit.model.Job;
+import com.niit.model.JobApplication;
 import com.niit.model.ProfilePicture;
 import com.niit.model.User;
 
@@ -37,7 +38,7 @@ public class DBConfig
 				hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
 				hibernateProperties.setProperty("hibernate.show_sql", "true");
 				lsf.addProperties(hibernateProperties);
-				Class classes[]=new Class[]{User.class,Job.class,BlogPost.class,BlogComment.class,ProfilePicture.class,Friend.class};
+				Class classes[]=new Class[]{User.class,Job.class,BlogPost.class,BlogComment.class,ProfilePicture.class,Friend.class,JobApplication.class};
 			    return lsf.addAnnotatedClasses(classes).buildSessionFactory();
 			}
 			@Bean

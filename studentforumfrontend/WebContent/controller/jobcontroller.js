@@ -72,6 +72,20 @@ $scope.showJobDetails=false;
 				$location.path('/login')
 		})
 	}
+	
+	$scope.applyJob=function(id){
+		JobService.applyJob(id).then(function(response){
+			console.log(response.status)
+			alert('Job Applied Successfully..')
+			$scope.job=response.data
+			getAllJobs()
+			console.log(response.status)
+		},function(response){
+			if(response.status==401)
+				$location.path('/login')
+		})
+	}
+	
 getAllJobs()	
 	
 })

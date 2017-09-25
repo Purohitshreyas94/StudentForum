@@ -158,7 +158,11 @@
 											       <tr>
                                                          <td><h5><b>Posted On  &nbsp;:-</b></h5></td><td>{{job.postedOn | date : "dd MMMM yyyy"}}</td>
 											      </tr>
-											</table>
+											     
+					                        </table>
+					                         <div class="col-sm-6 col-sm-offset-3" ng-hide="currentUser.role=='ADMIN'">
+													<input type="submit" ng-click="applyJob(job.id)"  id="register-submit" tabindex="4" class="btn btn class btn btn-success"  value="Apply">
+										    </div>
 										 </div>
 									</div>
 								</div>

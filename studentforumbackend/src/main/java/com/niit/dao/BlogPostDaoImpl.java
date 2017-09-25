@@ -23,7 +23,7 @@ public class BlogPostDaoImpl implements BlogPostDao {
 		public void saveBlogPost(BlogPost blogPost) {
 			Session session=sessionFactory.getCurrentSession();
 			session.save(blogPost);
-
+           
 		}
 		
 		public List<BlogPost> getBlogPosts(int approved) {
